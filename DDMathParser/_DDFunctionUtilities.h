@@ -42,6 +42,7 @@
 + (DDMathFunction) expFunction;
 + (DDMathFunction) ceilFunction;
 + (DDMathFunction) absFunction;
++ (DDMathFunction) fabsFunction;
 + (DDMathFunction) floorFunction;
 + (DDMathFunction) percentFunction;
 

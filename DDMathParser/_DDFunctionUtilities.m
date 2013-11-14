@@ -520,8 +520,20 @@ static inline DDExpression* _DDRTOD(DDExpression *e, DDMathEvaluator *evaluator,
 		REQUIRE_N_ARGS(1);
         NSNumber *n = [[arguments objectAtIndex:0] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
         RETURN_IF_NIL(n);
-        
+
         NSNumber *result = [NSNumber numberWithLongLong:llabs([n longLongValue])];
+		return [DDExpression numberExpressionWithNumber:result];
+	};
+	return DD_AUTORELEASE([function copy]);
+}
+
++ (DDMathFunction) fabsFunction {
+	DDMathFunction function = ^ DDExpression* (NSArray *arguments, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
+		REQUIRE_N_ARGS(1);
+        NSNumber *n = [[arguments objectAtIndex:0] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
+        RETURN_IF_NIL(n);
+        
+        NSNumber *result = [NSNumber numberWithDouble:fabs([n doubleValue])];
 		return [DDExpression numberExpressionWithNumber:result];
 	};
 	return DD_AUTORELEASE([function copy]);
