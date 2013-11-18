@@ -186,6 +186,19 @@ static inline DDExpression* _DDRTOD(DDExpression *e, DDMathEvaluator *evaluator,
 	return DD_AUTORELEASE([function copy]);
 }
 
++ (DDMathFunction) cuberootFunction {
+	DDMathFunction function = ^ DDExpression* (NSArray *arguments, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
+		REQUIRE_N_ARGS(1);
+		NSNumber * base = [[arguments objectAtIndex:0] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
+		RETURN_IF_NIL(base);
+        
+		NSNumber * root = @(3);
+        NSNumber *result = [NSNumber numberWithDouble:pow([base doubleValue], 1/[root doubleValue])];
+		return [DDExpression numberExpressionWithNumber:result];
+	};
+	return DD_AUTORELEASE([function copy]);
+}
+
 + (DDMathFunction) andFunction {
 	DDMathFunction function = ^ DDExpression* (NSArray *arguments, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
 		REQUIRE_N_ARGS(2);

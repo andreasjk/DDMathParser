@@ -21,6 +21,8 @@
 + (DDMathFunction) negateFunction;
 + (DDMathFunction) factorialFunction;
 + (DDMathFunction) powFunction;
++ (DDMathFunction) nthrootFunction;
++ (DDMathFunction) cuberootFunction;
 + (DDMathFunction) andFunction;
 + (DDMathFunction) orFunction;
 + (DDMathFunction) notFunction;
