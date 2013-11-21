@@ -679,9 +679,7 @@ static inline DDExpression* _DDRTOD(DDExpression *e, DDMathEvaluator *evaluator,
 + (DDMathFunction) sinhFunction {
 	DDMathFunction function = ^ DDExpression* (NSArray *arguments, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
 		REQUIRE_N_ARGS(1);
-        DDExpression *argument = [arguments objectAtIndex:0];
-        argument = _DDDTOR(argument, evaluator, error);
-        NSNumber *n = [argument evaluateWithSubstitutions:variables evaluator:evaluator error:error];
+        NSNumber *n = [[arguments objectAtIndex:0] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
         RETURN_IF_NIL(n);
         
         NSNumber *result = [NSNumber numberWithDouble:sinh([n doubleValue])];
@@ -693,9 +691,7 @@ static inline DDExpression* _DDRTOD(DDExpression *e, DDMathEvaluator *evaluator,
 + (DDMathFunction) coshFunction {
 	DDMathFunction function = ^ DDExpression* (NSArray *arguments, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
 		REQUIRE_N_ARGS(1);
-        DDExpression *argument = [arguments objectAtIndex:0];
-        argument = _DDDTOR(argument, evaluator, error);
-        NSNumber *n = [argument evaluateWithSubstitutions:variables evaluator:evaluator error:error];
+        NSNumber *n = [[arguments objectAtIndex:0] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
         RETURN_IF_NIL(n);
         
         NSNumber *result = [NSNumber numberWithDouble:cosh([n doubleValue])];
@@ -707,9 +703,7 @@ static inline DDExpression* _DDRTOD(DDExpression *e, DDMathEvaluator *evaluator,
 + (DDMathFunction) tanhFunction {
 	DDMathFunction function = ^ DDExpression* (NSArray *arguments, NSDictionary *variables, DDMathEvaluator *evaluator, NSError **error) {
 		REQUIRE_N_ARGS(1);
-        DDExpression *argument = [arguments objectAtIndex:0];
-        argument = _DDDTOR(argument, evaluator, error);
-        NSNumber *n = [argument evaluateWithSubstitutions:variables evaluator:evaluator error:error];
+        NSNumber *n = [[arguments objectAtIndex:0] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
         RETURN_IF_NIL(n);
         
         NSNumber *result = [NSNumber numberWithDouble:tanh([n doubleValue])];
@@ -725,7 +719,7 @@ static inline DDExpression* _DDRTOD(DDExpression *e, DDMathEvaluator *evaluator,
         RETURN_IF_NIL(n);
         
         NSNumber *result = [NSNumber numberWithDouble:asinh([n doubleValue])];
-		return _DDRTOD([DDExpression numberExpressionWithNumber:result], evaluator, error);
+		return [DDExpression numberExpressionWithNumber:result];
 	};
 	return DD_AUTORELEASE([function copy]);
 }
@@ -737,7 +731,7 @@ static inline DDExpression* _DDRTOD(DDExpression *e, DDMathEvaluator *evaluator,
         RETURN_IF_NIL(n);
         
         NSNumber *result = [NSNumber numberWithDouble:acosh([n doubleValue])];
-		return _DDRTOD([DDExpression numberExpressionWithNumber:result], evaluator, error);
+		return [DDExpression numberExpressionWithNumber:result];
 	};
 	return DD_AUTORELEASE([function copy]);
 }
@@ -749,7 +743,7 @@ static inline DDExpression* _DDRTOD(DDExpression *e, DDMathEvaluator *evaluator,
         RETURN_IF_NIL(n);
         
         NSNumber *result = [NSNumber numberWithDouble:atanh([n doubleValue])];
-		return _DDRTOD([DDExpression numberExpressionWithNumber:result], evaluator, error);
+		return [DDExpression numberExpressionWithNumber:result];
 	};
 	return DD_AUTORELEASE([function copy]);
 }
