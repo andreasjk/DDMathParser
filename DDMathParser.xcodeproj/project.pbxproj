@@ -79,6 +79,12 @@
 		8DD76F9A0486AA7600D96B5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
 		8DD76F9F0486AA7600D96B5E /* DDMathParser.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859EA3029092ED04C91782 /* DDMathParser.1 */; };
+		E1BAF89A1877B586007B5AE5 /* NSNumber+DDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BAF8991877B586007B5AE5 /* NSNumber+DDUtilities.m */; };
+		E1BAF89B1877B5AD007B5AE5 /* NSNumber+DDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BAF8991877B586007B5AE5 /* NSNumber+DDUtilities.m */; };
+		E1BAF89C1877B5B5007B5AE5 /* NSNumber+DDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BAF8991877B586007B5AE5 /* NSNumber+DDUtilities.m */; };
+		E1BAF89F1877B600007B5AE5 /* NSDecimalNumber+DDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BAF89E1877B600007B5AE5 /* NSDecimalNumber+DDUtilities.m */; };
+		E1BAF8A01877B600007B5AE5 /* NSDecimalNumber+DDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BAF89E1877B600007B5AE5 /* NSDecimalNumber+DDUtilities.m */; };
+		E1BAF8A11877B600007B5AE5 /* NSDecimalNumber+DDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BAF89E1877B600007B5AE5 /* NSDecimalNumber+DDUtilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -163,6 +169,10 @@
 		55F9F0131295C19900F4A9FD /* NSExpression+EasyParsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSExpression+EasyParsing.m"; sourceTree = "<group>"; };
 		8DD76FA10486AA7600D96B5E /* DDMathParser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DDMathParser; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859EA3029092ED04C91782 /* DDMathParser.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = DDMathParser.1; sourceTree = "<group>"; };
+		E1BAF8981877B586007B5AE5 /* NSNumber+DDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+DDUtilities.h"; sourceTree = "<group>"; };
+		E1BAF8991877B586007B5AE5 /* NSNumber+DDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+DDUtilities.m"; sourceTree = "<group>"; };
+		E1BAF89D1877B600007B5AE5 /* NSDecimalNumber+DDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDecimalNumber+DDUtilities.h"; sourceTree = "<group>"; };
+		E1BAF89E1877B600007B5AE5 /* NSDecimalNumber+DDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDecimalNumber+DDUtilities.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,6 +377,10 @@
 				55F9EFED1295AF7500F4A9FD /* _DDNumberExpression.m */,
 				55F9EFEF1295AFB500F4A9FD /* _DDVariableExpression.h */,
 				55F9EFF01295AFB500F4A9FD /* _DDVariableExpression.m */,
+				E1BAF8981877B586007B5AE5 /* NSNumber+DDUtilities.h */,
+				E1BAF8991877B586007B5AE5 /* NSNumber+DDUtilities.m */,
+				E1BAF89D1877B600007B5AE5 /* NSDecimalNumber+DDUtilities.h */,
+				E1BAF89E1877B600007B5AE5 /* NSDecimalNumber+DDUtilities.m */,
 			);
 			name = Evaluator;
 			path = DDMathParser;
@@ -487,7 +501,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1BAF89C1877B5B5007B5AE5 /* NSNumber+DDUtilities.m in Sources */,
 				118ADCE813F69A69002C3CDA /* _DDParserTerm.m in Sources */,
+				E1BAF8A11877B600007B5AE5 /* NSDecimalNumber+DDUtilities.m in Sources */,
 				118ADCE913F69A69002C3CDA /* _DDGroupTerm.m in Sources */,
 				118ADCEA13F69A69002C3CDA /* _DDFunctionTerm.m in Sources */,
 				118ADCEB13F69A69002C3CDA /* _DDNumberTerm.m in Sources */,
@@ -517,6 +533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1BAF89B1877B5AD007B5AE5 /* NSNumber+DDUtilities.m in Sources */,
 				118ADCE113F69A60002C3CDA /* _DDParserTerm.m in Sources */,
 				118ADCE213F69A60002C3CDA /* _DDGroupTerm.m in Sources */,
 				118ADCE313F69A60002C3CDA /* _DDFunctionTerm.m in Sources */,
@@ -534,6 +551,7 @@
 				55F9F0141295C19900F4A9FD /* NSExpression+EasyParsing.m in Sources */,
 				55BA67A01299FA19002279A5 /* NSString+DDMathParsing.m in Sources */,
 				55E2FCB7129DC90400CD6023 /* DDParser.m in Sources */,
+				E1BAF8A01877B600007B5AE5 /* NSDecimalNumber+DDUtilities.m in Sources */,
 				552532B912C1C92D00A942A7 /* _DDFunctionUtilities.m in Sources */,
 				5514EF161347EBA10010B9D8 /* DDTypes.m in Sources */,
 				550C416913BA8BCA00A041BC /* DDMathStringTokenizer.m in Sources */,
@@ -548,6 +566,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1BAF89F1877B600007B5AE5 /* NSDecimalNumber+DDUtilities.m in Sources */,
 				8DD76F9A0486AA7600D96B5E /* main.m in Sources */,
 				55F795F3129323B200EF2716 /* DDMathStringToken.m in Sources */,
 				5554D58C12944AFD00A62529 /* DDMathEvaluator.m in Sources */,
@@ -558,6 +577,7 @@
 				55BA67A11299FAEF002279A5 /* NSString+DDMathParsing.m in Sources */,
 				55325A1912A8C82C00DE9EB0 /* DDParser.m in Sources */,
 				552532B712C1C92D00A942A7 /* _DDFunctionUtilities.m in Sources */,
+				E1BAF89A1877B586007B5AE5 /* NSNumber+DDUtilities.m in Sources */,
 				5526E9E11310EF880018B4C9 /* DDTypes.m in Sources */,
 				550C416813BA8BCA00A041BC /* DDMathStringTokenizer.m in Sources */,
 				557067B813CC0D19004CB1B2 /* _DDParserTerm.m in Sources */,

@@ -72,4 +72,13 @@
     TEST(@"100/percent(5)", 2000);
 }
 
+- (void)testAbsoluteValue {
+    TEST(@"fabs(42)", 42);
+    TEST(@"fabs(-42)", 42);
+    TEST(@"fabs(-0)", 0);
+    TEST(@"fabs(-42.25)", 42.25);
+    TEST(@"fabs(42.25)", 42.25);
+    TEST(@"fabs(-0.0001)", 0.0001);
+}
+
 @end

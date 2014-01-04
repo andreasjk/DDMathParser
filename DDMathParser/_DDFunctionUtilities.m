@@ -12,6 +12,7 @@
 #import "DDMathParserMacros.h"
 #import "DDMathEvaluator.h"
 #import "_DDOperatorInfo.h"
+#import "NSNumber+DDUtilities.h"
 
 #define REQUIRE_N_ARGS(__n) { \
 if ([arguments count] != (__n)) { \
@@ -71,8 +72,8 @@ static inline DDExpression* _DDRTOD(DDExpression *e, DDMathEvaluator *evaluator,
 		
 		NSNumber * secondValue = [[arguments objectAtIndex:1] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
 		RETURN_IF_NIL(secondValue);
-		
-        NSNumber *result = [NSNumber numberWithDouble:[firstValue doubleValue] + [secondValue doubleValue]];
+
+        NSNumber *result = [firstValue dd_numberByAdding:secondValue];
         return [DDExpression numberExpressionWithNumber:result];
 	};
 	return DD_AUTORELEASE([function copy]);
@@ -86,7 +87,7 @@ static inline DDExpression* _DDRTOD(DDExpression *e, DDMathEvaluator *evaluator,
 		NSNumber * secondValue = [[arguments objectAtIndex:1] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
 		RETURN_IF_NIL(secondValue);
 		
-        NSNumber *result = [NSNumber numberWithDouble:[firstValue doubleValue] - [secondValue doubleValue]];
+        NSNumber *result = [firstValue dd_numberBySubtracting:secondValue];
 		return [DDExpression numberExpressionWithNumber:result];
 	};
 	return DD_AUTORELEASE([function copy]);
@@ -100,7 +101,7 @@ static inline DDExpression* _DDRTOD(DDExpression *e, DDMathEvaluator *evaluator,
 		NSNumber * secondValue = [[arguments objectAtIndex:1] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
 		RETURN_IF_NIL(secondValue);
 		
-        NSNumber *result = [NSNumber numberWithDouble:[firstValue doubleValue] * [secondValue doubleValue]];
+        NSNumber *result = [firstValue dd_numberByMultiplyingBy:secondValue];
 		return [DDExpression numberExpressionWithNumber:result];
 	};
 	return DD_AUTORELEASE([function copy]);
@@ -114,7 +115,7 @@ static inline DDExpression* _DDRTOD(DDExpression *e, DDMathEvaluator *evaluator,
 		NSNumber * secondValue = [[arguments objectAtIndex:1] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
 		RETURN_IF_NIL(secondValue);
 		
-        NSNumber *result = [NSNumber numberWithDouble:[firstValue doubleValue] / [secondValue doubleValue]];
+        NSNumber *result = [firstValue dd_numberByDividingBy:secondValue];
 		return [DDExpression numberExpressionWithNumber:result];
 	};
 	return DD_AUTORELEASE([function copy]);
@@ -140,7 +141,7 @@ static inline DDExpression* _DDRTOD(DDExpression *e, DDMathEvaluator *evaluator,
 		NSNumber * firstValue = [[arguments objectAtIndex:0] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
 		RETURN_IF_NIL(firstValue);
 		
-        NSNumber *result = [NSNumber numberWithDouble:-1 * [firstValue doubleValue]];
+        NSNumber *result = [[NSDecimalNumber decimalNumberWithMantissa:1 exponent:0 isNegative:YES] dd_numberByMultiplyingBy:firstValue];
 		return [DDExpression numberExpressionWithNumber:result];
 	};
 	return DD_AUTORELEASE([function copy]);
@@ -546,7 +547,7 @@ static inline DDExpression* _DDRTOD(DDExpression *e, DDMathEvaluator *evaluator,
         NSNumber *n = [[arguments objectAtIndex:0] evaluateWithSubstitutions:variables evaluator:evaluator error:error];
         RETURN_IF_NIL(n);
         
-        NSNumber *result = [NSNumber numberWithDouble:fabs([n doubleValue])];
+        NSNumber *result = [n dd_absoluteValue];
 		return [DDExpression numberExpressionWithNumber:result];
 	};
 	return DD_AUTORELEASE([function copy]);
@@ -575,7 +576,7 @@ static inline DDExpression* _DDRTOD(DDExpression *e, DDMathEvaluator *evaluator,
         NSString *parentFunction = [percentContext function];
         _DDOperatorInfo *operatorInfo = [[_DDOperatorInfo infosForOperatorFunction:parentFunction] lastObject];
         
-        NSNumber *context = [NSNumber numberWithInt:1];
+        NSNumber *context = [NSDecimalNumber decimalNumberWithMantissa:1 exponent:0 isNegative:NO];
         
         if ([operatorInfo arity] == DDOperatorArityBinary) {
             if ([parentFunction isEqualToString:DDOperatorAdd] || [parentFunction isEqualToString:DDOperatorMinus]) {
@@ -592,7 +593,9 @@ static inline DDExpression* _DDRTOD(DDExpression *e, DDMathEvaluator *evaluator,
         RETURN_IF_NIL(context);
         RETURN_IF_NIL(percent);
         
-        NSNumber *result = [NSNumber numberWithDouble:[context doubleValue] * ([percent doubleValue] / 100.0)];
+        NSNumber *fraction = [percent dd_numberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:1 exponent:-2 isNegative:NO]];
+        NSNumber *result = [context dd_numberByMultiplyingBy:fraction];
+        
         return [DDExpression numberExpressionWithNumber:result];
     };
     return DD_AUTORELEASE([function copy]);
