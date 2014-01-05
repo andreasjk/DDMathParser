@@ -181,7 +181,11 @@ static NSString *const _DDFunctionSelectorSuffix = @":variables:error:";
         while (integer > 1) {
             total *= integer--;
         }
-        result = @(total);
+        if (total == 0) {
+            result = @(NAN); // overflow
+        } else {
+            result = @(total);
+        }
     } else {
         result = @(tgamma([firstValue doubleValue]+1));
     }
