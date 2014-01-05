@@ -312,6 +312,11 @@
 	return [DDExpression numberExpressionWithNumber:result];
 }
 
+- (DDExpression *)fabs:(NSArray *)arguments variables:(NSDictionary *)variables error:(NSError **)error {
+    // Since the decimal abs function already handles fractions, just use it
+    return [self abs:arguments variables:variables error:error];
+}
+
 - (DDExpression *)floor:(NSArray *)arguments variables:(NSDictionary *)variables error:(NSError **)error {
 	REQUIRE_N_ARGS(1);
     NSNumber *n = [[self evaluator] evaluateExpression:[arguments objectAtIndex:0] withSubstitutions:variables error:error];

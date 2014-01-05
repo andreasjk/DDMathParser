@@ -72,4 +72,11 @@
     TEST(@"100/percent(5)", 2000);
 }
 
+- (void)testFloatAbsolute {
+    TEST(@"fabs(-1)", 1);
+    TEST(@"fabs(1)", 1);
+    TEST(@"fabs(-1.33)", 1.33);
+    TEST(@"fabs(1.33)", 1.33);
+}
+
 @end
