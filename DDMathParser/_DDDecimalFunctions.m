@@ -315,6 +315,11 @@ NSDecimal DDDecimalInverse(NSDecimal d) {
 }
 
 NSDecimal DDDecimalFactorial(NSDecimal d) {
+    NSDecimal zero = DDDecimalZero();
+    if (NSDecimalCompare(&d, &zero) == NSOrderedSame) {
+        return DDDecimalOne();
+    }
+
 	if (DDDecimalIsInteger(d)) {
 		NSDecimal one = DDDecimalOne();
 		NSDecimal final = one;
