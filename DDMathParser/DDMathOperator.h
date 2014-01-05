@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "DDMathParser.h"
 
+#define DD_MATHEMATICAL_POWER_ASSOCIATIVITY 1
+
 @interface DDMathOperator : NSObject <NSCopying>
 
 @property (nonatomic, readonly, strong) NSString *function;

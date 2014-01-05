@@ -114,16 +114,19 @@
         // NOTE: percent-as-percent precedence goes here (same as Factorial)
         precedence++;
         
-		//determine what associativity NSPredicate/NSExpression is using
-		//mathematically, it should be right associative, but it's usually parsed as left associative
-		//rdar://problem/8692313
-		NSExpression *powerExpression = [NSExpression expressionWithFormat:@"2 ** 3 ** 2"];
-		NSNumber *powerResult = [powerExpression expressionValueWithObject:nil context:nil];
-        DDOperatorAssociativity powerAssociativity = LEFT;
-		if ([powerResult intValue] == 512) {
-			powerAssociativity = RIGHT;
-		}
         
+        DDOperatorAssociativity powerAssociativity = RIGHT;
+        if (!DD_MATHEMATICAL_POWER_ASSOCIATIVITY) {
+            //determine what associativity NSPredicate/NSExpression is using
+            //mathematically, it should be right associative, but it's usually parsed as left associative
+            //rdar://problem/8692313
+            NSExpression *powerExpression = [NSExpression expressionWithFormat:@"2 ** 3 ** 2"];
+            NSNumber *powerResult = [powerExpression expressionValueWithObject:nil context:nil];
+            
+            if ([powerResult intValue] != 512) {
+                powerAssociativity = LEFT;
+            }
+        }
         [operators addObject:OPERATOR(DDOperatorPower, (@[@"**"]), BINARY, precedence, powerAssociativity)];
         precedence++;
         
