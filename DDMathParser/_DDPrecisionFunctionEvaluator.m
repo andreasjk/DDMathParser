@@ -85,25 +85,9 @@
 	REQUIRE_N_ARGS(1);
 	NSNumber *firstValue = [[self evaluator] evaluateExpression:[arguments objectAtIndex:0] withSubstitutions:variables error:error];
 	RETURN_IF_NIL(firstValue);
-    
-    NSNumber *result = nil;
-    NSDecimal decimal = [firstValue decimalValue];
-    if (DDDecimalIsInteger(decimal)) {
-        if (DDDecimalIsNegative(decimal) == NO) {
-            NSDecimal total = DDDecimalOne();
-            NSDecimal one = DDDecimalOne();
-            while (NSDecimalCompare(&decimal, &one) == NSOrderedDescending /* decimal > 1 */) {
-                total = DDDecimalMultiply(total, decimal);
-                decimal = DDDecimalSubtract(decimal, one);
-            }
-            result = [NSDecimalNumber decimalNumberWithDecimal:decimal];
-        } else {
-            result = @(NAN);
-        }
-    } else {
-        result = @(tgamma([firstValue doubleValue]+1));
-    }
-    
+
+    NSDecimal decimal = DDDecimalFactorial([firstValue decimalValue]);
+    NSDecimalNumber *result = [NSDecimalNumber decimalNumberWithDecimal:decimal];
     return [DDExpression numberExpressionWithNumber:result];
 }
 
