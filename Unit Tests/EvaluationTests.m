@@ -10,6 +10,7 @@
 #import "EvaluationTests.h"
 #import "DDMathParser.h"
 #import "NSExpression+EasyParsing.h"
+#import "DDMathEvaluator.h"
 
 @implementation EvaluationTests
 
@@ -50,6 +51,18 @@
     TEST(@"2**2", 4);
     TEST(@"2**2**2", 16);
     TEST(@"2**3**2", 512);
+}
+
+- (void)testSquareRoot {
+    TEST(@"sqrt(9)", 3);
+    TEST(@"sqrt(100)", 10);
+//    TEST(@"sqrt(-3)", NAN);
+}
+
+- (void)testCubeRoot {
+    TEST(@"cuberoot(27)", 3);
+    TEST(@"cuberoot(27)", 3);
+    TEST(@"cuberoot(27)", 3);
 }
 
 - (void)testNegation {
