@@ -55,7 +55,7 @@
     [self quickTestPattern:@"$/$%" withValues:[self quickCheckValues]];
     [self quickTestPattern:@"$!" withValues:[self quickCheckValues]];
     [self quickTestPattern:@"sin($)" withValues:[self quickCheckValues]];
-    return;
+
     [self quickTestPattern:@"cos($)" withValues:[self quickCheckValues]];
     [self quickTestPattern:@"tan($)" withValues:[self quickCheckValues]];
     [self quickTestPattern:@"sinh($)" withValues:[self quickCheckValues]];
