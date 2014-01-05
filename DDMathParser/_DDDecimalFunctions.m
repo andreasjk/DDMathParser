@@ -267,6 +267,14 @@ BOOL DDDecimalIsProbablyEqual(NSDecimal a, NSDecimal b) {
 }
 
 NSDecimal DDDecimalSqrt(NSDecimal d) {
+    NSDecimal zero = DDDecimalZero();
+    NSComparisonResult comparison = NSDecimalCompare(&d, &zero);
+    if (comparison == NSOrderedSame) {
+        return zero;
+    } else if (comparison == NSOrderedAscending) {
+        return DDDecimalNAN();
+    }
+
 	NSDecimal s = d;
     if (s._exponent > 2) { s._exponent /= 2; }
 	for (NSUInteger iterationCount = 0; iterationCount < 50; ++iterationCount) {
