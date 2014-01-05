@@ -431,11 +431,14 @@ NSDecimal DDDecimalSin(NSDecimal x) {
         e = NSDecimalDivide(&term, &numerator, &denominator, NSRoundBankers);
         if (IS_FATAL(e)) { break; }
         
+        NSDecimal result;
         if (shouldSubtract) {
-            NSDecimalSubtract(&final, &final, &term, NSRoundBankers);
+            e = NSDecimalSubtract(&result, &final, &term, NSRoundBankers);
         } else {
-            NSDecimalAdd(&final, &final, &term, NSRoundBankers);
+            e = NSDecimalAdd(&result, &final, &term, NSRoundBankers);
         }
+        if (IS_FATAL(e)) { break; }
+        final = result;
         
         shouldSubtract = !shouldSubtract;
     }
@@ -461,11 +464,14 @@ NSDecimal DDDecimalCos(NSDecimal x) {
         e = NSDecimalDivide(&term, &numerator, &denominator, NSRoundBankers);
         if (IS_FATAL(e)) { break; }
         
+        NSDecimal result;
         if (shouldSubtract) {
-            NSDecimalSubtract(&final, &final, &term, NSRoundBankers);
+            e = NSDecimalSubtract(&result, &final, &term, NSRoundBankers);
         } else {
-            NSDecimalAdd(&final, &final, &term, NSRoundBankers);
+            e = NSDecimalAdd(&result, &final, &term, NSRoundBankers);
         }
+        if (IS_FATAL(e)) { break;}
+        final = result;
         
         shouldSubtract = !shouldSubtract;
     }
