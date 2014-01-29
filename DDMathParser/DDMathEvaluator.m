@@ -13,7 +13,7 @@
 #import "DDMathParserMacros.h"
 #import "DDExpression.h"
 #import "_DDFunctionEvaluator.h"
-#import "_DDPrecisionFunctionEvaluator.h"
+#import "_DDPragmaticFunctionEvaluator.h"
 #import "DDExpressionRewriter.h"
 #import <objc/runtime.h>
 
@@ -56,7 +56,7 @@
         _usesHighPrecisionEvaluation = usesHighPrecisionEvaluation;
         
         if (_usesHighPrecisionEvaluation) {
-            _functionEvaluator = [[_DDPrecisionFunctionEvaluator alloc] initWithMathEvaluator:self];
+            _functionEvaluator = [[_DDPragmaticFunctionEvaluator alloc] initWithMathEvaluator:self];
         } else {
             _functionEvaluator = [[_DDFunctionEvaluator alloc] initWithMathEvaluator:self];
         }

@@ -350,24 +350,26 @@ NSDecimal DDDecimalFactorial(NSDecimal d) {
 	}
 }
 
-extern NSDecimal DDDecimalPower(NSDecimal d, NSDecimal power) {
-    NSDecimal r = DDDecimalOne();
+extern NSDecimal DDDecimalPower(NSDecimal base, NSDecimal power) {
+    NSDecimal one = DDDecimalOne();
     NSDecimal zero = DDDecimalZero();
-    NSComparisonResult compareToZero = NSDecimalCompare(&zero, &power);
-    if (compareToZero == NSOrderedSame) {
-        return r;
-    }
-    if (DDDecimalIsInteger(power) && compareToZero == NSOrderedAscending) {
+    
+    // use decimal power if power is int && power >= 1 && base >= 1
+    // base >= 1 is "required" because otherwise NSDecimalPower() will result in NaN as power becomes large for numbers like 0.5^power, causing it to "overflow" as it approaches zero
+    // TODO: look this over again, seems like correct behavior but not sure. Could fall back to low-precision only for NaN result when base is < 1, but that would cause a discontiunity in the results
+    if (DDDecimalIsInteger(power)
+        && NSDecimalCompare(&zero, &power) == NSOrderedAscending
+        && NSDecimalCompare(&base, &one) != NSOrderedAscending) {
         // we can only use the NSDecimal function for positive integers
         NSUInteger p = DDUIntegerFromDecimal(power);
-        NSDecimalPower(&r, &d, p, NSRoundBankers);
+        NSDecimalPower(&one, &base, p, NSRoundBankers);
     } else {
-        double base = DDDoubleFromDecimal(d);
+        double b = DDDoubleFromDecimal(base);
         double p = DDDoubleFromDecimal(power);
-        double result = pow(base, p);
-        r = DDDecimalFromDouble(result);
+        double result = pow(b, p);
+        one = DDDecimalFromDouble(result);
     }
-    return r;
+    return one;
 }
 
 NSDecimal DDDecimalLeftShift(NSDecimal base, NSDecimal shift) {

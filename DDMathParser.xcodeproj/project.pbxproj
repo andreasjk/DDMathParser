@@ -85,7 +85,9 @@
 		8DD76F9A0486AA7600D96B5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
 		8DD76F9F0486AA7600D96B5E /* DDMathParser.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859EA3029092ED04C91782 /* DDMathParser.1 */; };
-		E1613D2C18794F8300867C79 /* PrecisionFunctionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E1613D2B18794F8300867C79 /* PrecisionFunctionTests.m */; };
+		E11CBFA818989DFA00AAD6CA /* _DDPragmaticFunctionEvaluator.m in Sources */ = {isa = PBXBuildFile; fileRef = E11CBFA718989DFA00AAD6CA /* _DDPragmaticFunctionEvaluator.m */; };
+		E11CBFA91898A5E900AAD6CA /* _DDPragmaticFunctionEvaluator.m in Sources */ = {isa = PBXBuildFile; fileRef = E11CBFA718989DFA00AAD6CA /* _DDPragmaticFunctionEvaluator.m */; };
+		E1613D2C18794F8300867C79 /* PragmaticFunctionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E1613D2B18794F8300867C79 /* PragmaticFunctionTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -175,7 +177,9 @@
 		55F9F0131295C19900F4A9FD /* NSExpression+EasyParsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSExpression+EasyParsing.m"; sourceTree = "<group>"; };
 		8DD76FA10486AA7600D96B5E /* DDMathParser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DDMathParser; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859EA3029092ED04C91782 /* DDMathParser.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = DDMathParser.1; sourceTree = "<group>"; };
-		E1613D2B18794F8300867C79 /* PrecisionFunctionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrecisionFunctionTests.m; sourceTree = "<group>"; };
+		E11CBFA618989DFA00AAD6CA /* _DDPragmaticFunctionEvaluator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DDPragmaticFunctionEvaluator.h; sourceTree = "<group>"; };
+		E11CBFA718989DFA00AAD6CA /* _DDPragmaticFunctionEvaluator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DDPragmaticFunctionEvaluator.m; sourceTree = "<group>"; };
+		E1613D2B18794F8300867C79 /* PragmaticFunctionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PragmaticFunctionTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +293,8 @@
 				552532B612C1C92D00A942A7 /* _DDFunctionEvaluator.m */,
 				55F391881632FF8800AB28B1 /* _DDPrecisionFunctionEvaluator.h */,
 				55F391891632FF8900AB28B1 /* _DDPrecisionFunctionEvaluator.m */,
+				E11CBFA618989DFA00AAD6CA /* _DDPragmaticFunctionEvaluator.h */,
+				E11CBFA718989DFA00AAD6CA /* _DDPragmaticFunctionEvaluator.m */,
 				55F3918D1634AAB000AB28B1 /* _DDDecimalFunctions.h */,
 				55F3918E1634AAB100AB28B1 /* _DDDecimalFunctions.m */,
 			);
@@ -387,7 +393,7 @@
 				55F795F11293235A00EF2716 /* TokenizerTests.m */,
 				55D2AD4E1295834600BA2905 /* EvaluationTests.h */,
 				55D2AD4F1295834600BA2905 /* EvaluationTests.m */,
-				E1613D2B18794F8300867C79 /* PrecisionFunctionTests.m */,
+				E1613D2B18794F8300867C79 /* PragmaticFunctionTests.m */,
 			);
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -564,6 +570,7 @@
 				55F7963712934A1400EF2716 /* DDExpression.m in Sources */,
 				5554D58B12944AFD00A62529 /* DDMathEvaluator.m in Sources */,
 				55D2AD501295834600BA2905 /* EvaluationTests.m in Sources */,
+				E11CBFA91898A5E900AAD6CA /* _DDPragmaticFunctionEvaluator.m in Sources */,
 				55F9EFEB1295AF3D00F4A9FD /* _DDFunctionExpression.m in Sources */,
 				551AFD091878637D0081DFDA /* DDExpressionRewriter.m in Sources */,
 				55F9EFEE1295AF7500F4A9FD /* _DDNumberExpression.m in Sources */,
@@ -575,7 +582,7 @@
 				5514EF161347EBA10010B9D8 /* DDTypes.m in Sources */,
 				550C416913BA8BCA00A041BC /* DDMathStringTokenizer.m in Sources */,
 				55F99B2F1434FA9900817F7A /* _DDRewriteRule.m in Sources */,
-				E1613D2C18794F8300867C79 /* PrecisionFunctionTests.m in Sources */,
+				E1613D2C18794F8300867C79 /* PragmaticFunctionTests.m in Sources */,
 				554243581437654800BA293D /* DDMathOperator.m in Sources */,
 				556E126D149D2D5000859AD8 /* DDParserTypes.m in Sources */,
 				558A285714A2EEE9000FBE0C /* UnitTestMacros.m in Sources */,
@@ -600,6 +607,7 @@
 				552532B712C1C92D00A942A7 /* _DDFunctionEvaluator.m in Sources */,
 				5526E9E11310EF880018B4C9 /* DDTypes.m in Sources */,
 				550C416813BA8BCA00A041BC /* DDMathStringTokenizer.m in Sources */,
+				E11CBFA818989DFA00AAD6CA /* _DDPragmaticFunctionEvaluator.m in Sources */,
 				557067B813CC0D19004CB1B2 /* _DDParserTerm.m in Sources */,
 				556C293713CD4276005203F1 /* _DDGroupTerm.m in Sources */,
 				556C293A13CD42A8005203F1 /* _DDFunctionTerm.m in Sources */,

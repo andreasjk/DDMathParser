@@ -9,13 +9,13 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "DDMathEvaluator.h"
 
-@interface PrecisionFunctionTests : SenTestCase
+@interface PragmaticFunctionTests : SenTestCase
 @property (strong, nonatomic) DDMathEvaluator *evaluator;
 @property (strong, nonatomic) DDMathEvaluator *highPrecisionEvaluator;
 @property (strong, nonatomic) NSNumberFormatter *formatter;
 @end
 
-@implementation PrecisionFunctionTests
+@implementation PragmaticFunctionTests
 
 - (void)setUp
 {
@@ -74,7 +74,8 @@
     
     [self quickTestPattern:@"e()" withValues:nil];
     [self quickTestPattern:@"π()" withValues:nil];
-    
+   
+    [self quickTestPattern:@"$**$" withValues:[self quickCheckValues]];
     [self quickTestPattern:@"$**$**$" withValues:@[@"0",@"1",@"-1",@"2",@"-2"]];
     
     [self quickTestPattern:@"mod($,$)" withValues:[self quickCheckValues]];
@@ -94,7 +95,7 @@
     [self quickTestPattern:@"exp($)" withValues:[self quickCheckValues]];
     [self quickTestPattern:@"ceil($)" withValues:[self quickCheckValues]];
     [self quickTestPattern:@"floor($)" withValues:[self quickCheckValues]];
-    [self quickTestPattern:@"abs($)" withValues:[self quickCheckValues]];
+    [self quickTestPattern:@"abs($)" withValues:@[@"0", @"1", @"-1", @"-3", @"3", @"5465", @"15456654.0"]];
     [self quickTestPattern:@"percent($)" withValues:[self quickCheckValues]];
     
     // got tired of having one per line..
@@ -125,7 +126,7 @@
         NSString *newPrototype = [prototype stringByReplacingCharactersInRange:range withString:s];
         sane = [self quickTestPattern:newPrototype withValues:values];
         if (!sane) {
-            break;
+//            break;
         }
     }
     return sane;
@@ -162,8 +163,8 @@
 
     for (NSUInteger loc = 0; loc < regularFormatted.length && loc < hpFormatted.length; loc++) {
         NSRange range = NSMakeRange(loc, 1);
-        if (loc > 5) {
-            // 5 digits match, good enough!
+        if (loc > 10) {
+            // 10 digits match, good enough!
             // TODO: make sure it is good enough!
             return YES;
         }
@@ -172,7 +173,7 @@
         NSString *hpDigit = [hpFormatted substringWithRange:range];
         
         if (![regularDigit isEqualToString:hpDigit]) {
-            STFail(@"Possibly incorrect \"%@\" regular:%@ hp:%@", string, regularFormatted, hpFormatted);
+            STFail(@"Mismatch \"%@\" regular:%@ hp:%@", string, regularFormatted, hpFormatted);
             return NO;
         }
     }
