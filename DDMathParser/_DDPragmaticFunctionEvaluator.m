@@ -34,7 +34,7 @@ extern NSString *const _DDFunctionSelectorSuffix;
                                @"pow",
                                @"nthroot",
                                @"cuberoot",
-//                               @"mod", // failed tests
+                               @"mod", // failed tests but the high precision one is correct when compared to wolfram alpha
                                @"sqrt",
                                
                                // skipping because I don't use these, but might be OK, haven't tested
