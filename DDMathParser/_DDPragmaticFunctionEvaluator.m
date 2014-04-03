@@ -30,7 +30,7 @@ extern NSString *const _DDFunctionSelectorSuffix;
                                @"multiply",
                                @"divide",
                                @"negate",
-//                               @"factorial", // this guy is really unbounded for large numbers, can become stuck forever, I believe there is a better algorithm
+                               @"factorial",
                                @"pow",
                                @"nthroot",
                                @"cuberoot",
@@ -61,7 +61,7 @@ extern NSString *const _DDFunctionSelectorSuffix;
                                @"floor",
                                @"percent",
                                
-                               // going to skip all the trig functions since their results were sketchy
+                               // going to skip all the trig functions since many require a very, very large number of iterations to get the same accuracy as the standard functions
 //                               @"sin",
 //                               @"cos",
 //                               @"tan",

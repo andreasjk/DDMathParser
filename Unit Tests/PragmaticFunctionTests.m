@@ -11,7 +11,7 @@
 
 @interface PragmaticFunctionTests : SenTestCase
 @property (strong, nonatomic) DDMathEvaluator *evaluator;
-@property (strong, nonatomic) DDMathEvaluator *highPrecisionEvaluator;
+@property (strong, nonatomic) DDMathEvaluator *pragmaticEvaluator;
 @property (strong, nonatomic) NSNumberFormatter *formatter;
 @end
 
@@ -21,8 +21,8 @@
 {
     [super setUp];
     self.evaluator = [[DDMathEvaluator alloc] init];
-    self.highPrecisionEvaluator = [[DDMathEvaluator alloc] init];
-    self.highPrecisionEvaluator.usesHighPrecisionEvaluation = YES;
+    self.pragmaticEvaluator = [[DDMathEvaluator alloc] init];
+    self.pragmaticEvaluator.usesHighPrecisionEvaluation = YES;
     self.formatter = [[NSNumberFormatter alloc] init];
     self.formatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
     self.formatter.maximumIntegerDigits = 1000;
@@ -151,7 +151,7 @@
     NSNumber *regularResult = [self.evaluator evaluateString:string withSubstitutions:nil error:&regularError];
 
     NSError *hpError;
-    NSNumber *hpResult = [self.highPrecisionEvaluator evaluateString:string withSubstitutions:nil error:&hpError];
+    NSNumber *hpResult = [self.pragmaticEvaluator evaluateString:string withSubstitutions:nil error:&hpError];
     
     STAssertEqualObjects(regularError, hpError, @"If there is an error, both should have the same error");
 

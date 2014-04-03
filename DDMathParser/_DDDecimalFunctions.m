@@ -327,18 +327,19 @@ NSDecimal DDDecimalFactorial(NSDecimal d) {
     if (NSDecimalCompare(&d, &zero) == NSOrderedSame) {
         return DDDecimalOne();
     }
-
+    
 	if (DDDecimalIsInteger(d)) {
 		NSDecimal one = DDDecimalOne();
 		NSDecimal final = one;
 		if (DDDecimalIsNegative(d)) {
-            DDDecimalNegate(&d);
+            // Apparently there is no really good mathematical definition for negative factorial, so just do as tgamma and return NaN
+            return DDDecimalNAN();
 		}
 		while (NSDecimalCompare(&d, &one) == NSOrderedDescending) {
 			NSCalculationError e = NSDecimalMultiply(&final, &final, &d, NSRoundBankers);
 			NSDecimalSubtract(&d, &d, &one, NSRoundBankers);
             
-            if (e == NSCalculationOverflow) {
+            if (e == NSCalculationOverflow || e == NSCalculationLossOfPrecision) {
                 return DDDecimalNAN();
             }
 		}
