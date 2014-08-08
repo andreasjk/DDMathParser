@@ -339,7 +339,7 @@ NSDecimal DDDecimalFactorial(NSDecimal d) {
 			NSCalculationError e = NSDecimalMultiply(&final, &final, &d, NSRoundBankers);
 			NSDecimalSubtract(&d, &d, &one, NSRoundBankers);
             
-            if (e == NSCalculationOverflow || e == NSCalculationLossOfPrecision) {
+            if (e == NSCalculationOverflow) {
                 return DDDecimalNAN();
             }
 		}
